@@ -6,36 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-reservations = Reservation.create([
-  {
-    seat_reserved: A2,
-    user_id: 23,
-    flight_id: 1
-  },
-  {
-    seat_reserved: X2,
-    user_id: 33,
-    flight_id: 2
-  }
 
-])
 
-flights = Flight.create([
-  {
-    number: 5454,
-    origin: "san diego",
-    destination: "toronto",
-    seating_array: [[0,0,0,0,0][0,0,0,0,0]]
-    airplane_id: 1
-  },
-  {
-    number: 88,
-    origin: "brisbane",
-    destination: "the moon",
-    seating_array: [[0,0,0,0,0][0,0,0,0,0]]
-    airplane_id: 2
-  }
-])
+
 
 user = User.create([
   {
@@ -50,7 +23,7 @@ user = User.create([
   }
 ])
 
-planes = Plane.create([
+planes = Airplane.create([
   {
     name: "737",
     row: 6,
@@ -70,5 +43,35 @@ planes = Plane.create([
     name: "airbus",
     row: 8,
     column: 300
+  }
+])
+
+flights = Flight.create([
+  {
+    number: 5454,
+    origin: "san diego",
+    destination: "toronto",
+    seating_array: [0,0,0,0,0],
+    airplane_id: 1
+  },
+  {
+    number: 88,
+    origin: "brisbane",
+    destination: "the moon",
+    seating_array: [0,0,0,0,0],
+    airplane_id: 2
+  }
+])
+
+reservations = Reservation.create([
+  {
+    seat_reserved: "A2",
+    user_id: 1,
+    flight_id: 1
+  },
+  {
+    seat_reserved: "X2",
+    user_id: 2,
+    flight_id: 2
   }
 ])
