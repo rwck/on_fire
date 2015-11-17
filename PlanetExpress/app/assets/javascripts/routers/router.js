@@ -12,7 +12,7 @@ app.Router = Backbone.Router.extend({
 	},
 
 	testStuff: function() {
-		alert("blob");
+		// alert("blob");
 		console.log("running the '/' route function");
 	}
 

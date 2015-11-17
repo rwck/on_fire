@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.Flight_item = Backbone.Model.extend({
-	urlRoot: "/flight",
+	urlRoot: "/flights",
 	defaults: {
 		number: 3,
 		origin: "this_origin",
