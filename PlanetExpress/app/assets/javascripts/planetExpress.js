@@ -7,6 +7,10 @@ var app = app || {};
 
 app.init = function() {
 	app.airplaneList= new app.Airplane_list();
+	app.flight = new app.Flight_item;
+	app.blob = new app.Flight_listView({model: app.flight});
+	app.router = new app.Router();
+
 	// app.view = new app.AppView(app.secrets);
 	// app.secrets.fetch({
 	// 	success: function() {
