@@ -25,3 +25,7 @@
 //= require_tree ./views
 //= require planetExpress
 //= require_self
+
+$(document).ready(function(){
+	app.init();
+});
