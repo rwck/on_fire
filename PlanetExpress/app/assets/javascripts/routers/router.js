@@ -2,12 +2,13 @@ var app = app || {};
 
 app.Router = Backbone.Router.extend({
 
-	initialize: function() {
-		console.log("INITALIASING ROUTER");
+	routes: {
+		"users": "testStuff",
+		"*other": "testStuff"
 	},
 
-	routes: {
-		"*other": "testStuff"
+	initialize: function() {
+		console.log("INITALIASING ROUTER");
 	},
 
 	testStuff: function() {

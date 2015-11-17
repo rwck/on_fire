@@ -10,14 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 
+//= require jquery-2.1.4.min.js
 
-
-//= require jquery_ujs
-
-//=require underscore-min.js
-//=require backbone-min.js
+//= require underscore-min.js
+//= require backbone-min.js
 
 //= require_tree ./models
 //= require_tree ./collections

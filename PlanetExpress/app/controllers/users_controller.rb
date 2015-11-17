@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-
   def home
-
+    @this_is_a_test = "here is some text coming from the back end - home method in users controller"
   end
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    @this_is_a_test = "here is some text coming from the back end - index method in users controller"
   end
 
   # GET /users/1
