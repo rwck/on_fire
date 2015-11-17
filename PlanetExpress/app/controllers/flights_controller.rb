@@ -1,5 +1,7 @@
 class FlightsController < ApplicationController
+  # next line possibly not needed. ideally get rid
   skip_before_action :verify_authenticity_token
+
   before_action :set_flight, only: [:show, :edit, :update, :destroy]
 
   # GET /flights
