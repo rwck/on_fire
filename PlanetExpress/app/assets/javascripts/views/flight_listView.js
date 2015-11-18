@@ -35,11 +35,35 @@ app.Flight_listView = Backbone.View.extend({
       model: app.Flight_item
     });
 
-    var searchResult = app.flightSearchList.fetch();
-    console.log(searchResult);
+    console.log(app.flightSearchList);
 
+    // searchResult = app.Flight_list.where({origin: "brisbane"});
+    // console.log(searchResult);
 
+    // app.flightSearchList.where({origin: "brisbane"});
+    // console.log(searchResult);
   },
+
+    //   {complete: function() {
+    //       ;
+    //     }
+    // });
+  //   console.log(searchResult);
+  //
+  //
+  //   console.log(jsonFromSearch);
+  //
+  //   // jsonFromSearch = searchResult.responseJSON;
+  //
+  //   var searchResultsToReturn = [];
+  //
+  //   for (var i = 0; i < jsonFromSearch.length; i++) {
+  //     if (jsonFromSearch[i]["origin"] === inputOrigin) {
+  //       searchResultsToReturn.push(jsonFromSearch[i])
+  //     }
+  //   }
+  //   console.log(searchResultsToReturn);
+  // },
 
 
     // app.flightSearchList = new app.Flight_list({
