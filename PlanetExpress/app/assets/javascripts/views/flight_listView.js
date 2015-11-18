@@ -31,21 +31,30 @@ app.Flight_listView = Backbone.View.extend({
     var inputOrigin = $("#input-origin").val();
     var inputDestination = $("#input-destination").val();
 
-    app.flightSearchList =
-
     app.flightSearchList = new app.Flight_list({
       model: app.Flight_item
     });
 
-    app.flightSearchList.fetch({
-      data: {
-        where: {
-          origin: inputOrigin,
-          destination: inputDestination
-        }
-      }
-    });
-    console.log(app.flightSearchList);
+    var searchResult = app.flightSearchList.fetch();
+    console.log(searchResult);
+
+
+  },
+
+
+    // app.flightSearchList = new app.Flight_list({
+    //   model: app.Flight_item
+    // });
+    //
+    // app.flightSearchList.fetch({
+    //   data: {
+    //     where: {
+    //       origin: inputOrigin,
+    //       destination: inputDestination
+    //     }
+    //   }
+    // });
+    // console.log(app.flightSearchList);
 
 
 
