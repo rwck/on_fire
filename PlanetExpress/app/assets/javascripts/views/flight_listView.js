@@ -21,8 +21,7 @@ app.Flight_listView = Backbone.View.extend({
   render: function() {
     console.log(this.$el);
     app.airplaneList.fetch();
-    console.log(app.airplaneList.models[0].attributes);
-    this.template(this.model.attributes);
+    this.template(this.collection.attributes);
     console.log(this.template());
   },
 
@@ -31,81 +30,9 @@ app.Flight_listView = Backbone.View.extend({
     var inputOrigin = $("#input-origin").val();
     var inputDestination = $("#input-destination").val();
 
-    app.flightSearchList = new app.Flight_list({
-      model: app.Flight_item
-    });
-
-    console.log(app.flightSearchList);
-
-    // searchResult = app.Flight_list.where({origin: "brisbane"});
-    // console.log(searchResult);
-
-    // app.flightSearchList.where({origin: "brisbane"});
-    // console.log(searchResult);
+    var searchResult = this.collection.where({origin: inputOrigin, destination: inputDestination});
+    console.log(searchResult);
   },
-
-    //   {complete: function() {
-    //       ;
-    //     }
-    // });
-  //   console.log(searchResult);
-  //
-  //
-  //   console.log(jsonFromSearch);
-  //
-  //   // jsonFromSearch = searchResult.responseJSON;
-  //
-  //   var searchResultsToReturn = [];
-  //
-  //   for (var i = 0; i < jsonFromSearch.length; i++) {
-  //     if (jsonFromSearch[i]["origin"] === inputOrigin) {
-  //       searchResultsToReturn.push(jsonFromSearch[i])
-  //     }
-  //   }
-  //   console.log(searchResultsToReturn);
-  // },
-
-
-    // app.flightSearchList = new app.Flight_list({
-    //   model: app.Flight_item
-    // });
-    //
-    // app.flightSearchList.fetch({
-    //   data: {
-    //     where: {
-    //       origin: inputOrigin,
-    //       destination: inputDestination
-    //     }
-    //   }
-    // });
-    // console.log(app.flightSearchList);
-
-
-
-
-
-
-  // app.flight_list_view_one = new app.Flight_listView({
-  //   model: app.flight_list_one
-  // })
-
-  //     var sheduleCollection = new ();
-  //     sheduleCollection.fetch({
-  //     data: {where: {start: 'X', end: 'Y', teacher: 'Z'}}
-  // });
-
-  // rails command is
-  // Flight.find_by origin: "brisbane"
-
-  //   need to find by find_by origin: inputOrigin
-  //
-  //   Flight.where("origin = 'brisbane' and destination = 'the moon'")
-  //
-  // }
-
-
-  // this is just for testing purposes at the moment
-
 
   clickAlert: function() {
     var value = $("#input-box").val();

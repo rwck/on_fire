@@ -7,20 +7,17 @@ var app = app || {};
 
 app.init = function() {
 
-  
+
   app.airplaneList = new app.Airplane_list();
 
   app.airplaneList.fetch({
     complete: function() {
-      app.flight_list_one = new app.Flight_list();
-      app.flight_list_one.fetch({
+      app.flight_list = new app.Flight_list();
+      app.flight_list.fetch({
         complete: function() {
-          app.flight_list_view_one = new app.Flight_listView({
-            model: app.flight_list_one
-          });
-          app.flight_list_view_one = new app.Flight_listView({
-            model: app.flight_list_one
-          });
+          app.flight_list_view = new app.Flight_listView({
+                collection: app.flight_list
+              });
           app.router = new app.Router();
           Backbone.history.start();
         }
