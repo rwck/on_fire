@@ -35,39 +35,65 @@ app.Flight_listView = Backbone.View.extend({
       destination: inputDestination
     });
 
+    // this is for testing
+
     var searchResultsContents = searchResult[0].attributes;
 
+
+//  this is for testing
     theCollection = this.collection;
+    console.log(theCollection);
     console.log(theCollection.models);
     _.each(theCollection.models, function(array) {
       console.log(array.get("seating_array"));
     });
+  },
 
-    testArray = theCollection.models[0].get("seating_array");
-    console.log(testArray);
+  // this is for testing - it doesn't work properly yet
 
-    string = "";
+  drawGrid: function() {
+    console.log(this);
+    var collectionModels = app.flight_list_view.models
+
+    console.log(collectionModels);
+    // seatArray = theCollection.models[0].get("seating_array");
+    // console.log(testArray);
+    //
+    // var tableRowStart = "";
+    // var tableRowFinish = "";
+    // if ($.inArray(row, seatArray) === 0) {
+    //   tableRowStart += "<tr>";
+    // }
+    // if ($.inArray(row, seatArray) === seatArray.length) {
+    //   tableRowFinish += "</tr>";
+    // }
 
 
-    for (var i = 0; i < testArray.length; i++) {
-      for (var j = 0; j < testArray[i].length; j++) {
-        testArray[i][j] = i.toString() + j.toString();
-        // string += testArray[i].toString() + testArray[i][j].toString();
-      }
-    }
-    console.log(testArray);
 
-    var htmlString = ""
+    // for (var row = 0; i < seatArray.length; row++) {
+    //   for (var seat = 0; seat < seatArray[i].length; seat++) {
+    //     seatArray[row][seat] = row.toString() + seat.toString();
+    //   }
+    // }
 
-    _.each(testArray, function(row) {
-      console.log(row);
-      _.each(row, function(seat) {
-        console.log(seat);
-        htmlString += "<div class=\"seat-button\" id=\"" + seat + "\"> </div>"
-      })
-    })
-    console.log(htmlString);
 
+    // console.log(testArray);
+
+    // var htmlString = "";
+    // var finalHtmlString = "";
+    //
+    // _.each(testArray, function(row) {
+    //   console.log(row);
+    //   _.each(row, function(seat) {
+    //     console.log(seat);
+    //     htmlString += "<div class=\"seat-button\" id=\"" + seat + "\"> </div>"
+    //   })
+    // })
+
+
+    // finalHtmlString += tableRowStart + htmlString + tableRowFinish
+    // console.log(htmlString);
+    //
 
 
     //
@@ -86,9 +112,9 @@ app.Flight_listView = Backbone.View.extend({
 
     // });
 
-    console.log(string);
-
-    $(this.$el).html(htmlString);
+    // console.log(string);
+    //
+    // $(this.$el).html(htmlString);
 
 
 
@@ -97,6 +123,8 @@ app.Flight_listView = Backbone.View.extend({
     // console.log(searchResult[0].attributes);
     // $(this.$el).html(searchResultsContents["id"]);
   },
+
+  // this is for testing 
 
   clickAlert: function() {
     var value = $("#input-box").val();
@@ -124,37 +152,6 @@ app.Flight_listView = Backbone.View.extend({
     this.$el.html("Saved!");
   },
 
-  jQueryCreateGrid: function(x, y) {
-    var $container = $("<div></div>").css("float","left");
-
-    for (var i = 0; i < x; i++) {
-      for (var j = 0; j < y; j++) {
-        $("<div></div>").addClass("box").appendTo($container);
-      }
-
-      $("<div></div>").css("clear", "both").appendTo($container);
-    }
-
-    $(this.$el).html($container);
-
-    // $container.appendTo($("body"));
-  },
 
 
-
-    createGrid: function(v) {
-    var e = document.body;
-    for (var i = 0; i < v; i++) {
-      var row = document.createElement("div");
-      row.className = "row";
-      for (var x = 0; x <= v; x++) {
-        var cell = document.createElement("div");
-        cell.className = "gridsquare";
-        cell.id = (i * v) + x;
-        row.appendChild(cell);
-      }
-      e.appendChild(row);
-    }
-    document.getElementById("two").value = e.innerHTML;
-  }
 });
