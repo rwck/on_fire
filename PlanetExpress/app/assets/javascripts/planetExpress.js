@@ -7,6 +7,9 @@ var app = app || {};
 
 app.init = function() {
 
+  
+  app.airplaneList = new app.Airplane_list();
+
   app.airplaneList.fetch({
     complete: function() {
       app.flight_list_one = new app.Flight_list();
