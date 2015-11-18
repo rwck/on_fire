@@ -1,1 +1,95 @@
-@import 'flights'
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+body, #search-bg {
+	background: url("clouds.jpg");
+	background-size: cover;
+}
+
+body {
+	font-family: 'Lato', helvetica, sans-serif;
+	background-position: center top;
+}
+
+h1 {
+	font-family: 'Megrim', helvetica, sans-serif;
+	font-size: 5em;
+	text-align: center;
+	margin: 80px 0px 80px 0px;
+	-webkit-text-stroke-width: 2px;
+}
+
+#search-container {
+	position: relative;
+}
+
+#search-bg {
+  	position: absolute;
+  	top: 0px;
+  	right: 0px;
+  	bottom: 0px;
+  	left: 0px;
+  	z-index: 99;
+
+ 	-webkit-filter: blur(10px);
+  	filter: url('/media/blur.svg#blur');
+  	filter: blur(10px);
+
+	width: 990px;
+	height: 190px;
+	margin: auto;
+}
+
+#search-flight-form {
+	width: 1000px;
+	height: 200px;
+    margin: auto;
+	position: relative;
+	z-index: 100;
+	padding: 20px;
+	background: rgba(225,225,225,0.25);
+	border-radius: 10px;
+}
+
+#input-origin, #input-destination, #flight-search-submit {
+	padding: 5px;
+	font-size: 2em;
+	margin: 13px;
+	margin-top: 50px;
+}
+
+#input-origin, #input-destination {
+	-webkit-transition: all 0.30s ease-in-out;
+	outline: none;
+	border: 1px solid #DDDDDD;
+}
+
+#input-origin:focus, #input-destination:focus {
+	box-shadow: 0 0 5px #DB6718;
+	padding: 5px;
+	border: 1px solid #DB6718;
+	color: #26292E;
+}
+
+#flight-search-submit {
+	-webkit-transition: all 0.30s ease-in-out;
+	background-color: #26292E;
+	color: #fff;
+}
+
+#flight-search-submit:focus {
+	outline: none;
+	color: #DB6718;
+}
+
+#flight-search-submit:hover {
+	color: #DB6718;
+	cursor: pointer;
+}
