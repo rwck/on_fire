@@ -30,8 +30,72 @@ app.Flight_listView = Backbone.View.extend({
     var inputOrigin = $("#input-origin").val();
     var inputDestination = $("#input-destination").val();
 
-    var searchResult = this.collection.where({origin: inputOrigin, destination: inputDestination});
-    console.log(searchResult);
+    var searchResult = this.collection.where({
+      origin: inputOrigin,
+      destination: inputDestination
+    });
+
+    var searchResultsContents = searchResult[0].attributes;
+
+    theCollection = this.collection;
+    console.log(theCollection.models);
+    _.each(theCollection.models, function(array) {
+      console.log(array.get("seating_array"));
+    });
+
+    testArray = theCollection.models[0].get("seating_array");
+    console.log(testArray);
+
+    string = "";
+
+
+    for (var i = 0; i < testArray.length; i++) {
+      for (var j = 0; j < testArray[i].length; j++) {
+        testArray[i][j] = i.toString() + j.toString();
+        // string += testArray[i].toString() + testArray[i][j].toString();
+      }
+    }
+    console.log(testArray);
+
+    var htmlString = ""
+
+    _.each(testArray, function(row) {
+      console.log(row);
+      _.each(row, function(seat) {
+        console.log(seat);
+        htmlString += "<div class=\"seat-button\" id=\"" + seat + "\"> </div>"
+      })
+    })
+    console.log(htmlString);
+
+
+
+    //
+    // _.each(testArray, function(column) {
+    //   console.log(column);
+    //   console.log(_.indexOf(testArray, column));
+    //   _.each(column, function(row) {
+    //     console.log(_.indexOf(column, row));
+    //   })
+    // _.each(column, function(row) {
+    //   string += column.toString();
+
+    // _.indexOf(testArray, column).toString();
+
+    //  + _.indexOf(column, row).toString();
+
+    // });
+
+    console.log(string);
+
+    $(this.$el).html(htmlString);
+
+
+
+
+
+    // console.log(searchResult[0].attributes);
+    // $(this.$el).html(searchResultsContents["id"]);
   },
 
   clickAlert: function() {
@@ -52,13 +116,45 @@ app.Flight_listView = Backbone.View.extend({
       airplane: 1
     });
 
-    // end of code to get rid of
-
     console.log(myNewFlight);
     myNewFlight.save();
     // console.log(this.model.models[0].attributes);
 
     // this.model.models[0].save();
     this.$el.html("Saved!");
+  },
+
+  jQueryCreateGrid: function(x, y) {
+    var $container = $("<div></div>").css("float","left");
+
+    for (var i = 0; i < x; i++) {
+      for (var j = 0; j < y; j++) {
+        $("<div></div>").addClass("box").appendTo($container);
+      }
+
+      $("<div></div>").css("clear", "both").appendTo($container);
+    }
+
+    $(this.$el).html($container);
+
+    // $container.appendTo($("body"));
+  },
+
+
+
+    createGrid: function(v) {
+    var e = document.body;
+    for (var i = 0; i < v; i++) {
+      var row = document.createElement("div");
+      row.className = "row";
+      for (var x = 0; x <= v; x++) {
+        var cell = document.createElement("div");
+        cell.className = "gridsquare";
+        cell.id = (i * v) + x;
+        row.appendChild(cell);
+      }
+      e.appendChild(row);
+    }
+    document.getElementById("two").value = e.innerHTML;
   }
 });
