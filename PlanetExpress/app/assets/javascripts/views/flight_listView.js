@@ -2,11 +2,10 @@ var app = app || {};
 
 app.Flight_listView = Backbone.View.extend({
   el: "#one",
-  // el: "#search-flight-form",
 
   events: {
     // first line is for testing(yilan)
-    "click #submit-button-1": "clickAlert",
+    // "click #submit-button-1": "clickAlert",
     //
     "click #flight-search-submit": "flightSearch"
   },
@@ -28,17 +27,48 @@ app.Flight_listView = Backbone.View.extend({
   },
 
   flightSearch: function() {
+    console.log("flightsearch function is running");
     var inputOrigin = $("#input-origin").val();
     var inputDestination = $("#input-destination").val();
 
-    // rails command is
-    // Flight.find_by origin: "brisbane"
+    app.flightSearchList =
 
-    need to find by find_by origin: inputOrigin
+    app.flightSearchList = new app.Flight_list({
+      model: app.Flight_item
+    });
 
-    Flight.where("origin = 'brisbane' and destination = 'the moon'")
+    app.flightSearchList.fetch({
+      data: {
+        where: {
+          origin: inputOrigin,
+          destination: inputDestination
+        }
+      }
+    });
+    console.log(app.flightSearchList);
 
-  }
+
+
+
+
+
+  // app.flight_list_view_one = new app.Flight_listView({
+  //   model: app.flight_list_one
+  // })
+
+  //     var sheduleCollection = new ();
+  //     sheduleCollection.fetch({
+  //     data: {where: {start: 'X', end: 'Y', teacher: 'Z'}}
+  // });
+
+  // rails command is
+  // Flight.find_by origin: "brisbane"
+
+  //   need to find by find_by origin: inputOrigin
+  //
+  //   Flight.where("origin = 'brisbane' and destination = 'the moon'")
+  //
+  // }
 
 
   // this is just for testing purposes at the moment
