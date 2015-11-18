@@ -2,9 +2,13 @@ var app = app || {};
 
 app.Flight_listView = Backbone.View.extend({
   el: "#one",
+  // el: "#search-flight-form",
 
   events: {
-    "click #submit-button-1": "clickAlert"
+    // first line is for testing(yilan)
+    "click #submit-button-1": "clickAlert",
+    //
+    "click #flight-search-submit": "flightSearch"
   },
 
   initialize: function() {
@@ -23,7 +27,22 @@ app.Flight_listView = Backbone.View.extend({
     console.log(this.template());
   },
 
+  flightSearch: function() {
+    var inputOrigin = $("#input-origin").val();
+    var inputDestination = $("#input-destination").val();
+
+    // rails command is
+    // Flight.find_by origin: "brisbane"
+
+    need to find by find_by origin: inputOrigin
+
+    Flight.where("origin = 'brisbane' and destination = 'the moon'")
+
+  }
+
+
   // this is just for testing purposes at the moment
+
 
   clickAlert: function() {
     var value = $("#input-box").val();

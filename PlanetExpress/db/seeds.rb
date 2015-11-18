@@ -51,14 +51,14 @@ flights = Flight.create([
     number: 5454,
     origin: "san diego",
     destination: "toronto",
-    seating_array: [0,0,0,0,0],
+    seating_array: [[0,0,0,0,0],[0,0,0,0,0]],
     airplane_id: 1
   },
   {
     number: 88,
     origin: "brisbane",
     destination: "the moon",
-    seating_array: [0,0,0,0,0],
+    seating_array: [[0,0,0,0,0],[0,0,0,0,0]],
     airplane_id: 2
   }
 ])
