@@ -13,8 +13,17 @@ app.Flight_view = Backbone.View.extend({
 
   seatClicked: function(event) {
     el = "#table";
+
+    $("#seating td").click(function (event) { 
+      if($(this).hasClass('taken-seat'))
+          e.preventDefault();
+      $("#seating td").removeClass('clicked')
+      $(this).toggleClass('clicked');
+      console.log("clicked")
+    });
+
     console.log(this);
-    alert("booo!")
+    // alert("booo!")
     console.log(event);
   },
 
