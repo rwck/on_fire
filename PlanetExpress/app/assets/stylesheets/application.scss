@@ -154,12 +154,15 @@ h1 {
 
 .flight-table th, .flight-rows td {
 	background-color: rgba(0, 0 , 0, 0.5);
-	border-bottom: 1px solid white;
 	width: 16%;
 	height: 50px;
 	vertical-align: middle;
 	text-align: center;
 	color: #fff;
+}
+
+.flight-rows td {
+	border-top: 1px solid white;
 }
 
 .results {
@@ -171,7 +174,7 @@ h1 {
 
 .flight-table tr:hover {
 	background-color: rgba(0, 0 , 0, 0.5);
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 .flight-table th {
