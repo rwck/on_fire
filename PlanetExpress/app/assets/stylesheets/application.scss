@@ -247,6 +247,7 @@ h1 {
 
 #seating tbody td:hover {
     background-color: #26292E;
+    cursor: pointer;
 }
 
 #seating tbody td.clicked, td.clicked:hover {
