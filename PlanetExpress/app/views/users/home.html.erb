@@ -1,82 +1,81 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta chars\='text/css'>
 
-<h1>
-  Something's probably not working.
-</h1>
+<head>
+  <meta chars\='text/css'>
+
 
 
 </head>
+
 <body>
 
-
-<!-- ================
-Flight Search View 
+  <!-- ================
+Flight Search View
 =====================-->
 
-<h1>Planet Express</h1>
+  <h1>Planet Express</h1>
 
-<!-- <div class="test"></div> -->
+  <!-- <div class="test"></div> -->
 
-<!--   <input id="input-box" name="name" placeholder="This is from backbone" type="text">
+  <!--   <input id="input-box" name="name" placeholder="This is from backbone" type="text">
   <input id="submit-button-1" type="button" value="click here"> -->
 
-<script id="template-test" type="text/template">
+  <script id="flight-search-template" type="text/template">
 
-<div id="search-container">
-	<div id="search-bg"></div>
-	  <div id="search-flight-form">
-	    <input id="input-origin" placeholder="Origin" type="text">
+    <div id="search-container">
+      <div id="search-bg"></div>
+      <div id="search-flight-form">
+        <input id="input-origin" placeholder="Origin" type="text">
 
-	    <input id="input-destination" placeholder="Destination" type="text">
+        <input id="input-destination" placeholder="Destination" type="text">
 
-	    <button id="flight-search-submit">Find Flights</button>
-	  </div>
-</div>
+        <button id="flight-search-submit">Find Flights</button>
+      </div>
+    </div>
 
-<script id="flight-search-template" type="text/template">
+    <script id="flight-search-template" type="text/template"></script>
 
+    <script id="flight-template" type="text/template">
+      <td>
+        <%%= origin %>
+      </td>
+      <td>
+        <%%= destination %>
+      </td>
+      <td>
+        <%%= date %>
+      </td>
+      <td>
+        <%%= number %>
+      </td>
+      <td class="seats-count"></td>
+      <td class="booking-link">
+        <button class="book-button flight-details">Book</button>
+      </td>
+    </script>
 
+    <script id="flight-list-template" type="text/template">
+      <table class="flight-table">
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Date</th>
+        </tr>
+        <tbody class="flight-rows"></tbody>
 
-</script>
+      </table>
 
-<script id="flight-template" type="text/template">
-  <td><%%= origin %></td>
-  <td><%%= destination %></td>
-  <td><%%= date %></td>
-  <td><%%= number %></td>
-  <td class="seats-count"></td>
-  <td class="booking-link">
-    <button class="book-button flight-details">Book</button>
-  </td>
-</script>
+    </script>
 
-<script id="flight-list-template" type="text/template">
-  <table class="flight-table">
-    <tr>
-      <th>h1</th>
-      <th>h2</th>
-    </tr>
-    <tbody class="flight-rows"></tbody>
+    <div id="output"></div>
 
-  </table>
+    </div>
 
-</script>
-
-<div id="output"></div>
-
-</div>
-
-
-
-
-<div id="one"></div>
-<div id="table"></div>
-
-<div id="two"></div>
+    <div id="one"></div>
+    <div id="table"></div>
+    <div id="two"></div>
 
 </body>
+
 </html>

@@ -42,32 +42,30 @@ app.Flight_ItemView = Backbone.View.extend({
     var id = event.target.id;
     console.log(id);
 
-    this.searchResult["id"]
+    console.log(this);
 
-    var flightToDraw = this.collection.where({
-      number: parseInt(id)
-    });
+    console.log(this.searchResult);
 
-    something = app.flight_list.where({
-      number: parseInt(id)
-    })
+    // var flightToDraw = this.collection.where({
+    //   number: parseInt(id)
+    // });
 
-    var airplaneId = something[0].get("airplane_id")
+    // var airplaneId = something[0].get("airplane_id")
 
-    console.log(airplaneId);
+    // console.log(airplaneId);
 
-    airplaneLayout = app.airplaneList.where({
-      id: airplaneId
-    })
+    // airplaneLayout = app.airplaneList.where({
+    //   id: airplaneId
+    // })
 
-    console.log(airplaneLayout);
+    // console.log(airplaneLayout);
 
-    var row = airplaneLayout[0].get("row")
-    var column = airplaneLayout[0].get("column")
-
-    console.log(row);
-
-    console.log(column);
+    // var row = airplaneLayout[0].get("row")
+    // var column = airplaneLayout[0].get("column")
+    //
+    // console.log(row);
+    //
+    // console.log(column);
 
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var rows = row; // 1-30
