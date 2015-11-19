@@ -139,8 +139,6 @@ h1 {
 
 
 
-
-
 /* FLIGHT LIST PAGE */ 
 
 .flight-table, #flight-rows {
@@ -200,3 +198,118 @@ h1 {
 .book-button:focus {
 	outline: none;
 }
+
+
+
+/* Seat Selection */
+
+#wrapper {
+	position: relative;
+	z-index: 100;
+	background: rgba(225,225,225,0.25);
+	width: 100%;
+	height: 100vh;
+	display: flex;
+}
+
+#table {
+	margin-left: 100px;
+	margin-top: 50px;
+}
+
+#seating, #seating th, #seating td {
+	border-collapse: separate;
+	text-align: center;
+}
+
+#seating {
+	padding-top: 20px;
+	border-spacing: 10px 15px;
+	position: relative;
+	z-index: 100;
+}
+
+#seating th {
+	width: 60px;
+	height: 60px;
+	vertical-align: middle;
+}
+
+#seating tbody td {
+	width: 60px;
+	height: 60px;
+	background-color: #8CABA7;
+	padding: 5px;
+	-webkit-transition: all 0.20s ease-in-out;
+	vertical-align: middle;
+	color: white;
+}
+
+#seating tbody td:hover {
+    background-color: #26292E;
+    cursor: pointer;
+}
+
+#seating tbody td.clicked, td.clicked:hover {
+    background-color: #DB6718;
+}
+
+#seating tbody .taken-seat {
+	background-color: #3D4543;
+}
+
+#flight-details {
+	position: relative;
+	z-index: 100;
+	width: 60%;
+}
+
+h2 {
+	font-family: 'Megrim', helvetica;
+	font-size: 3em;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	-webkit-text-stroke-width: 2px;
+}
+
+p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 1.5em;
+	color: white;
+}
+
+.details {
+	color: #DB6718;
+	float: right;
+}
+
+.box {
+	margin: auto;
+	padding: 5%;
+	width: 60%;
+	background-color: rgba(0, 0 , 0, 0.5);
+	border-radius: 10px;
+}
+
+#book-now, #go-back {
+	-webkit-transition: all 0.30s ease-in-out;
+	/*background-color: rgba(38, 41 , 46, 0.75);*/
+	background-color: rgba(0, 0 , 0, 0.5);
+	color: #fff;
+	width: 60%;	
+	display: block;
+	margin: auto;
+	font-size: 2em;
+	padding: 5px;
+	border-radius: 10px;
+	margin-top: 30px;
+}
+
+#book-now:hover, #go-back:hover {
+	background-color: rgba(38, 41 , 46, 0.8);
+	color: #DB6718;
+	cursor: pointer;
+}
+

@@ -31,6 +31,7 @@ app.Flight_ItemView = Backbone.View.extend({
     console.log("on booking click", this.model);
   },
 
+  
   drawTable: function(event) {
     // console.log(event.target.id);
     // console.log(event.current.);
@@ -80,7 +81,7 @@ app.Flight_ItemView = Backbone.View.extend({
     // var rows = row; // 1-30
     // var columns = column;
     var result = "";
-    result += "<table border=1>";
+    result += "<table id='seating'>";
     result += "<tbody>";
     for (var y = 0; y < columns; y++) {
       result += "<tr>";
