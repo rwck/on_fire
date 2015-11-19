@@ -49,7 +49,7 @@ app.Flight_listView = Backbone.View.extend({
       var rows = this.$(".flight-rows");
       console.log("search result1", searchResult);
       for (var i = 0; i < searchResult.length; i++) {
-        console.log("search result i: ", searchResult[i]);
+        console.log("search result is: ", searchResult[i]);
         var itemView = new app.Flight_ItemView({
           model: searchResult[i]
         });
