@@ -56,6 +56,9 @@ app.Flight_ItemView = Backbone.View.extend({
 
     var rows = app.Flight_ItemView.searchResult[0].get("airplane").row
 
+    var seatsTaken = app.reservationView.attributes.seat_reserved;
+    console.log(seatsTaken);
+
 
     // console.log(thisFlightID);
     //
