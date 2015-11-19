@@ -4,6 +4,7 @@ app.Flight_listView = Backbone.View.extend({
   el: "#one",
 
   events: {
+    "click .flight-number": "drawTable",
     // first line is for testing(yilan)
     // "click #submit-button-1": "clickAlert",
     //
@@ -30,23 +31,77 @@ app.Flight_listView = Backbone.View.extend({
     var inputOrigin = $("#input-origin").val();
     var inputDestination = $("#input-destination").val();
 
-    var searchResult = this.collection.where({
+    // testing
+    console.log(inputOrigin);
+    console.log(inputDestination);
+
+    searchResult = this.collection.where({
       origin: inputOrigin,
       destination: inputDestination
     });
 
-    // this is for testing
+    _.each(searchResult, function(result) {
+      console.log(result.get("seating_array"))
+    })
 
-    var searchResultsContents = searchResult[0].attributes;
+    var resultsHTML = ""
+    var resultsView = this.$el
+    _.each(searchResult, function(flight) {
 
+      resultsHTML += "<span class='flight-number'>Flight number: " + flight.get("number") + "</span><br>"
 
-//  this is for testing
-    theCollection = this.collection;
-    console.log(theCollection);
-    console.log(theCollection.models);
-    _.each(theCollection.models, function(array) {
-      console.log(array.get("seating_array"));
+      resultsView.html(resultsHTML);
     });
+
+
+    this.airplanes = []
+    var view = this;
+    _.each(searchResult, function(result) {
+      this.airplanes.push(result.get("airplane"))
+    }, this) //
+
+    console.log(this.airplanes);
+  },
+
+
+  drawTable: function() {
+    var view = this;
+
+    var id = "";
+
+    _.each(this.airplanes,
+      function(attribute) {
+        console.log(attribute);
+        var row = attribute.row;
+        var column = attribute.column;
+        console.log(row);
+        console.log(column);
+
+        var generatedSeatSnippet = "";
+        var tableRowStartSnippet = "";
+        var tableRowEndSnippet = ""
+
+        var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var rows = row; // 1-30
+        var columns = column;
+        var result = "";
+        result += "<table border=1>";
+        result += "<tbody>";
+        for (var y = 0; y < columns; y++) {
+          result += "<tr>";
+          for (var x = 0; x < rows; x++) {
+            result += "<td id=" + (y + 1) + alphabet[x] + ">";
+            result += (y + 1) + alphabet[x];
+            result += "</td>";
+          }
+
+          result += "</tr>";
+        }
+        result += "</tbody>";
+        result += "</table>";
+        $('#table').html(result);
+        console.log(result);
+      })
   },
 
   // this is for testing - it doesn't work properly yet
@@ -124,7 +179,7 @@ app.Flight_listView = Backbone.View.extend({
     // $(this.$el).html(searchResultsContents["id"]);
   },
 
-  // this is for testing 
+  // this is for testing
 
   clickAlert: function() {
     var value = $("#input-box").val();
