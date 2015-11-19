@@ -34,25 +34,24 @@ app.Flight_view = Backbone.View.extend({
 
     seatsTaken.push( app.reservationView.attributes.seat_reserved.split(","));
 
-    console.log(seatsTaken);
+    console.log(seatsTaken[0].length);
 
-    var numberSeatsTaken = seatsTaken.length;
-    if (numberSeatsTaken === 1) {
-      var seatSingPlu = " seat has ";
+    // var availableSeats =
+    //
+    // numberOfAvailableSeats
+
+    var numberSeatsTaken = seatsTaken[0].length;
+    if (numberSeatsTaken === 0) {
+      var seatSingPlu = "All seats are available "
+    }
+    else if (numberSeatsTaken === 1) {
+      var seatSingPlu = " seat has been taken ";
     }
     else {
-      var seatSingPlu = " seats have ";
+      var seatSingPlu = " seats have been taken  ";
     }
 
-    console.log(numberSeatsTaken + seatSingPlu + "been taken so far");
+    console.log(numberSeatsTaken + seatSingPlu + "so far");
 
-
-
-    // console.log(app.reservationView.attributes.seat_reserved);
-
-    // model.save(app.reservationView.attributes.seat_reserved, {patch: true}); // doesn't work properly
-    // app.reservationView.
-
-  //  /reservations/:id(.:format) -- patch or post
   },
 })

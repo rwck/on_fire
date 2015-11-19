@@ -30,15 +30,15 @@ app.Flight_ItemView = Backbone.View.extend({
   },
 
   seatClicked: function(event) {
-    // el = "#table";
     console.log(this);
-    // alert("clicked!");
     alert(event.target.id);
   },
 
   onClickBook: function(event) {
     console.log("on booking click", this.model);
   },
+
+
 
   drawTable: function(event) {
     console.log(event.target.id);
@@ -59,19 +59,9 @@ app.Flight_ItemView = Backbone.View.extend({
     var seatsTaken = app.reservationView.attributes.seat_reserved;
     console.log(seatsTaken);
 
+    app.Flight_ItemView.searchResult
 
-    // console.log(thisFlightID);
-    //
-    // console.log(app.Flight_ItemView.searchResult);
-    //
-    //
-    // plane = app.airplaneList.where({id: parseInt(planeId)});
-    // console.log(plane);
-    // rows = plane[0].get("row")
-    // columns = plane[0].get("column")
-    //
-    // console.log(rows);
-    // console.log(columns);
+    var numberOfAvailableSeats = (app.Flight_ItemView.searchResult[0].get("airplane").column) * app.Flight_ItemView.searchResult[0].get("airplane").row;
 
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
