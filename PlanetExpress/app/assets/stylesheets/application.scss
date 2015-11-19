@@ -137,7 +137,7 @@ h1 {
 
 
 /* FLIGHT LIST PAGE */
->>>>>>> testing
+
 
 .flight-table, #flight-rows {
 	position: relative;
@@ -196,7 +196,12 @@ h1 {
 .book-button:focus {
 	outline: none;
 }
-<<<<<<< HEAD
+
+
+#wrapper {
+
+}
+
 
 
 
@@ -209,6 +214,7 @@ h1 {
 	width: 100%;
 	height: 100vh;
 	display: flex;
+	display:none;
 }
 
 #table {
