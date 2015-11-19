@@ -61,7 +61,6 @@ app.Flight_listView = Backbone.View.extend({
       console.log("no result");
     };
 
-
   },
 
 

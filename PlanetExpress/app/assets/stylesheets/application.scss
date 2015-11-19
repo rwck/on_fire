@@ -193,3 +193,7 @@ h1 {
 .book-button:hover {
 	cursor: pointer;
 }
+
+.book-button:focus {
+	outline: none;
+}
