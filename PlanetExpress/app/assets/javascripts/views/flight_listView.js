@@ -5,9 +5,7 @@ app.Flight_listView = Backbone.View.extend({
 
   events: {
     "click .flight-number": "drawTable",
-    // first line is for testing(yilan)
-    // "click #submit-button-1": "clickAlert",
-    //
+
     "click #flight-search-submit": "flightSearch"
   },
 
@@ -104,80 +102,7 @@ app.Flight_listView = Backbone.View.extend({
       })
   },
 
-  // this is for testing - it doesn't work properly yet
 
-  drawGrid: function() {
-    console.log(this);
-    var collectionModels = app.flight_list_view.models
-
-    console.log(collectionModels);
-    // seatArray = theCollection.models[0].get("seating_array");
-    // console.log(testArray);
-    //
-    // var tableRowStart = "";
-    // var tableRowFinish = "";
-    // if ($.inArray(row, seatArray) === 0) {
-    //   tableRowStart += "<tr>";
-    // }
-    // if ($.inArray(row, seatArray) === seatArray.length) {
-    //   tableRowFinish += "</tr>";
-    // }
-
-
-
-    // for (var row = 0; i < seatArray.length; row++) {
-    //   for (var seat = 0; seat < seatArray[i].length; seat++) {
-    //     seatArray[row][seat] = row.toString() + seat.toString();
-    //   }
-    // }
-
-
-    // console.log(testArray);
-
-    // var htmlString = "";
-    // var finalHtmlString = "";
-    //
-    // _.each(testArray, function(row) {
-    //   console.log(row);
-    //   _.each(row, function(seat) {
-    //     console.log(seat);
-    //     htmlString += "<div class=\"seat-button\" id=\"" + seat + "\"> </div>"
-    //   })
-    // })
-
-
-    // finalHtmlString += tableRowStart + htmlString + tableRowFinish
-    // console.log(htmlString);
-    //
-
-
-    //
-    // _.each(testArray, function(column) {
-    //   console.log(column);
-    //   console.log(_.indexOf(testArray, column));
-    //   _.each(column, function(row) {
-    //     console.log(_.indexOf(column, row));
-    //   })
-    // _.each(column, function(row) {
-    //   string += column.toString();
-
-    // _.indexOf(testArray, column).toString();
-
-    //  + _.indexOf(column, row).toString();
-
-    // });
-
-    // console.log(string);
-    //
-    // $(this.$el).html(htmlString);
-
-
-
-
-
-    // console.log(searchResult[0].attributes);
-    // $(this.$el).html(searchResultsContents["id"]);
-  },
 
   // this is for testing
 
@@ -187,10 +112,6 @@ app.Flight_listView = Backbone.View.extend({
     this.model.models[0].attributes.newValue = value;
     console.log(this.model.newValue);
     console.log(this.model);
-
-    // end of stuff for testing
-
-    // we will get rid of the code below
 
     var myNewFlight = new app.Flight_item({
       number: 12,

@@ -25,17 +25,3 @@ app.init = function() {
     }
   })
 }
-
-
-// app.view = new app.AppView(app.secrets);
-// app.secrets.fetch({
-// 	success: function() {
-// 		//request every 4sec
-// 		setInterval(function() {
-// 			app.secrets.fetch();
-// 		}, 4000);
-// 	},
-// 	error: function (){
-// 		console.log("error loading secerts");
-// 	}
-// });
