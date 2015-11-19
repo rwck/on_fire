@@ -4,84 +4,170 @@ app.Flight_listView = Backbone.View.extend({
   el: "#one",
 
   events: {
-    // first line is for testing(yilan)
-    // "click #submit-button-1": "clickAlert",
-    //
-    "click #flight-search-submit": "flightSearch"
+
+
+    "click #flight-search-submit": "flightSearch",
+
+    "click .seat-button": "seatClicked"
+
   },
 
   initialize: function() {
     console.log("initialising flight list view function");
-    this.template = _.template($("#template-test").html(), {});
     this.render();
-    console.log(this.model);
-    this.$el.html(this.template());
+
   },
 
+
   render: function() {
-    console.log(this.$el);
-    app.airplaneList.fetch();
-    console.log(app.airplaneList.models[0].attributes);
-    this.template(this.model.attributes);
-    console.log(this.template());
+    this.template = _.template($("#flight-search-template").html(), {});
+    this.$el.html(this.template());
+    // app.airplaneList.fetch();
+    // app.flight_list.fetch();
+    // flightSearch();
   },
 
   flightSearch: function() {
-    console.log("flightsearch function is running");
-    var inputOrigin = $("#input-origin").val();
-    var inputDestination = $("#input-destination").val();
-
-    app.flightSearchList = new app.Flight_list({
-      model: app.Flight_item
+    console.log("start flight search ");
+    var inputOrigin = $("#input-origin").val().toUpperCase();
+    console.log("inputOrigin");
+    var inputDestination = $("#input-destination").val().toUpperCase();
+    console.log("collection", this.collection.length);
+    var searchResult = this.collection.where({
+      origin: inputOrigin,
+      destination: inputDestination
     });
 
-    var searchResult = app.flightSearchList.fetch();
-    console.log(searchResult);
+    app.Flight_ItemView.searchResult = searchResult;
+
+
+    if (searchResult !== null) {
+      // this.$el.empty();
+      var tmpl = _.template($("#flight-list-template").html());
+      this.$el.html(tmpl({}));
+
+      var rows = this.$(".flight-rows");
+      console.log("search result1", searchResult);
+      for (var i = 0; i < searchResult.length; i++) {
+        console.log("search result i: ", searchResult[i]);
+        var itemView = new app.Flight_ItemView({
+          model: searchResult[i]
+        });
+        console.log("i is ", i);
+        itemView.render();
+        rows.append(itemView.el);
+      };
+    } else {
+      console.log("no result");
+    };
 
 
   },
 
 
-    // app.flightSearchList = new app.Flight_list({
-    //   model: app.Flight_item
-    // });
-    //
-    // app.flightSearchList.fetch({
-    //   data: {
-    //     where: {
-    //       origin: inputOrigin,
-    //       destination: inputDestination
-    //     }
-    //   }
-    // });
-    // console.log(app.flightSearchList);
+
+  renderSeatingView: function() {
+    console.log("flightsearch function is running");
+    var inputOrigin = $("#input-origin").val().toUpperCase();
+    var inputDestination = $("#input-destination").val().toUpperCase();
+
+    // testing
+    console.log(inputOrigin);
+    console.log(inputDestination);
+
+    searchResult = this.collection.where({
+      origin: inputOrigin,
+      destination: inputDestination
+    });
+
+    _.each(searchResult, function(result) {
+      console.log(result.get("seating_array"))
+    })
+
+    var resultsHTML = ""
+    var resultsView = this.$el
+    _.each(searchResult, function(flight) {
+
+      resultsHTML += "<span class='flight-number' id='" + flight.get("number") + "'>Flight number: " + flight.get("number") + "</span><br>"
+
+      resultsView.html(resultsHTML);
+    });
 
 
+    this.airplanes = []
+    var view = this;
+    _.each(searchResult, function(result) {
+        this.airplanes.push(result.get("airplane"))
+      }, this) //
 
+    console.log(this.airplanes);
+  },
 
+  seatClicked: function(event) {
+    el = "#table";
+    console.log(this);
+    // alert("clicked!");
+    alert(event.target.id);
+  },
 
+  drawTable: function(event) {
+    // console.log(event.target.id);
+    console.log("drawing table");
+    var view = this;
+    testview = this;
 
-  // app.flight_list_view_one = new app.Flight_listView({
-  //   model: app.flight_list_one
-  // })
+    // this.collection.where({number: })
 
-  //     var sheduleCollection = new ();
-  //     sheduleCollection.fetch({
-  //     data: {where: {start: 'X', end: 'Y', teacher: 'Z'}}
-  // });
+    var id = event.target.id;
+    console.log(id);
 
-  // rails command is
-  // Flight.find_by origin: "brisbane"
+    var flightToDraw = this.collection.where({
+      number: parseInt(id)
+    });
 
-  //   need to find by find_by origin: inputOrigin
-  //
-  //   Flight.where("origin = 'brisbane' and destination = 'the moon'")
-  //
-  // }
+    something = app.flight_list.where({
+      number: parseInt(id)
+    })
 
+    var airplaneId = something[0].get("airplane_id")
 
-  // this is just for testing purposes at the moment
+    console.log(airplaneId);
 
+    airplaneLayout = app.airplaneList.where({
+      id: airplaneId
+    })
+
+    console.log(airplaneLayout);
+
+    var row = airplaneLayout[0].get("row")
+    var column = airplaneLayout[0].get("column")
+
+    console.log(row);
+
+    console.log(column);
+
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var rows = row; // 1-30
+    var columns = column;
+    var result = "";
+    result += "<table border=1>";
+    result += "<tbody>";
+    for (var y = 0; y < columns; y++) {
+      result += "<tr>";
+      for (var x = 0; x < rows; x++) {
+        result += "<td class='seat-button' id='" + (y + 1) + alphabet[x] + "'>";
+        result += (y + 1) + alphabet[x];
+        result += "</td>";
+      }
+
+      result += "</tr>";
+    }
+    result += "</tbody>";
+    result += "</table>";
+    // this.$el.html(result);
+    $('#table').html(result);
+    console.log(result);
+  },
 
   clickAlert: function() {
     var value = $("#input-box").val();
@@ -90,10 +176,6 @@ app.Flight_listView = Backbone.View.extend({
     console.log(this.model.newValue);
     console.log(this.model);
 
-    // end of stuff for testing
-
-    // we will get rid of the code below
-
     var myNewFlight = new app.Flight_item({
       number: 12,
       origin: "san fransisco",
@@ -101,13 +183,14 @@ app.Flight_listView = Backbone.View.extend({
       airplane: 1
     });
 
-    // end of code to get rid of
-
     console.log(myNewFlight);
     myNewFlight.save();
     // console.log(this.model.models[0].attributes);
 
     // this.model.models[0].save();
     this.$el.html("Saved!");
-  }
+  },
+
+
+
 });
