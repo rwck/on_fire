@@ -4,30 +4,72 @@ app.Flight_listView = Backbone.View.extend({
   el: "#one",
 
   events: {
-    "click .flight-number": "drawTable",
 
-    "click #flight-search-submit": "flightSearch"
+
+    "click #flight-search-submit": "flightSearch",
+
+    "click .seat-button": "seatClicked"
+
   },
 
   initialize: function() {
     console.log("initialising flight list view function");
-    this.template = _.template($("#template-test").html(), {});
     this.render();
-    console.log(this.model);
-    this.$el.html(this.template());
+
   },
 
+
   render: function() {
-    console.log(this.$el);
-    app.airplaneList.fetch();
-    this.template(this.collection.attributes);
-    console.log(this.template());
+    this.template = _.template($("#flight-search-template").html(), {});
+    this.$el.html(this.template());
+    // app.airplaneList.fetch();
+    // app.flight_list.fetch();
+    // flightSearch();
   },
 
   flightSearch: function() {
+    console.log("start flight search ");
+    var inputOrigin = $("#input-origin").val().toUpperCase();
+    console.log("inputOrigin");
+    var inputDestination = $("#input-destination").val().toUpperCase();
+    console.log("collection", this.collection.length);
+    var searchResult = this.collection.where({
+      origin: inputOrigin,
+      destination: inputDestination
+    });
+
+    app.Flight_ItemView.searchResult = searchResult;
+
+
+    if (searchResult !== null) {
+      // this.$el.empty();
+      var tmpl = _.template($("#flight-list-template").html());
+      this.$el.html(tmpl({}));
+
+      var rows = this.$(".flight-rows");
+      console.log("search result1", searchResult);
+      for (var i = 0; i < searchResult.length; i++) {
+        console.log("search result i: ", searchResult[i]);
+        var itemView = new app.Flight_ItemView({
+          model: searchResult[i]
+        });
+        console.log("i is ", i);
+        itemView.render();
+        rows.append(itemView.el);
+      };
+    } else {
+      console.log("no result");
+    };
+
+
+  },
+
+
+
+  renderSeatingView: function() {
     console.log("flightsearch function is running");
-    var inputOrigin = $("#input-origin").val();
-    var inputDestination = $("#input-destination").val();
+    var inputOrigin = $("#input-origin").val().toUpperCase();
+    var inputDestination = $("#input-destination").val().toUpperCase();
 
     // testing
     console.log(inputOrigin);
@@ -46,7 +88,7 @@ app.Flight_listView = Backbone.View.extend({
     var resultsView = this.$el
     _.each(searchResult, function(flight) {
 
-      resultsHTML += "<span class='flight-number'>Flight number: " + flight.get("number") + "</span><br>"
+      resultsHTML += "<span class='flight-number' id='" + flight.get("number") + "'>Flight number: " + flight.get("number") + "</span><br>"
 
       resultsView.html(resultsHTML);
     });
@@ -55,56 +97,77 @@ app.Flight_listView = Backbone.View.extend({
     this.airplanes = []
     var view = this;
     _.each(searchResult, function(result) {
-      this.airplanes.push(result.get("airplane"))
-    }, this) //
+        this.airplanes.push(result.get("airplane"))
+      }, this) //
 
     console.log(this.airplanes);
   },
 
-
-  drawTable: function() {
-    var view = this;
-
-    var id = "";
-
-    _.each(this.airplanes,
-      function(attribute) {
-        console.log(attribute);
-        var row = attribute.row;
-        var column = attribute.column;
-        console.log(row);
-        console.log(column);
-
-        var generatedSeatSnippet = "";
-        var tableRowStartSnippet = "";
-        var tableRowEndSnippet = ""
-
-        var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var rows = row; // 1-30
-        var columns = column;
-        var result = "";
-        result += "<table border=1>";
-        result += "<tbody>";
-        for (var y = 0; y < columns; y++) {
-          result += "<tr>";
-          for (var x = 0; x < rows; x++) {
-            result += "<td id=" + (y + 1) + alphabet[x] + ">";
-            result += (y + 1) + alphabet[x];
-            result += "</td>";
-          }
-
-          result += "</tr>";
-        }
-        result += "</tbody>";
-        result += "</table>";
-        $('#table').html(result);
-        console.log(result);
-      })
+  seatClicked: function(event) {
+    el = "#table";
+    console.log(this);
+    // alert("clicked!");
+    alert(event.target.id);
   },
 
+  drawTable: function(event) {
+    // console.log(event.target.id);
+    console.log("drawing table");
+    var view = this;
+    testview = this;
 
+    // this.collection.where({number: })
 
-  // this is for testing
+    var id = event.target.id;
+    console.log(id);
+
+    var flightToDraw = this.collection.where({
+      number: parseInt(id)
+    });
+
+    something = app.flight_list.where({
+      number: parseInt(id)
+    })
+
+    var airplaneId = something[0].get("airplane_id")
+
+    console.log(airplaneId);
+
+    airplaneLayout = app.airplaneList.where({
+      id: airplaneId
+    })
+
+    console.log(airplaneLayout);
+
+    var row = airplaneLayout[0].get("row")
+    var column = airplaneLayout[0].get("column")
+
+    console.log(row);
+
+    console.log(column);
+
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var rows = row; // 1-30
+    var columns = column;
+    var result = "";
+    result += "<table border=1>";
+    result += "<tbody>";
+    for (var y = 0; y < columns; y++) {
+      result += "<tr>";
+      for (var x = 0; x < rows; x++) {
+        result += "<td class='seat-button' id='" + (y + 1) + alphabet[x] + "'>";
+        result += (y + 1) + alphabet[x];
+        result += "</td>";
+      }
+
+      result += "</tr>";
+    }
+    result += "</tbody>";
+    result += "</table>";
+    // this.$el.html(result);
+    $('#table').html(result);
+    console.log(result);
+  },
 
   clickAlert: function() {
     var value = $("#input-box").val();

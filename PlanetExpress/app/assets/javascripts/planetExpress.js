@@ -10,6 +10,8 @@ app.init = function() {
 
   app.airplaneList = new app.Airplane_list();
 
+  app.flightview = new app.Flight_view();
+
   app.airplaneList.fetch({
     complete: function() {
       app.flight_list = new app.Flight_list();

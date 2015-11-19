@@ -1,10 +1,10 @@
 <h1>
-  Something's working.
+  Something's probably not working.
 </h1>
 
 <div class="test"></div>
 
-<script id="template-test" type="text/template">
+<script id="flight-search-template" type="text/template">
 
   <div id="search-flight-form">
     <input id="input-origin" placeholder="Flight origin" type="text">
@@ -14,10 +14,34 @@
 
 </script>
 
-<div id="one"></div>
+<script id="flight-template" type="text/template">
+  <td><%%= origin %></td>
+  <td><%%= destination %></td>
+  <td><%%= date %></td>
+  <td><%%= number %></td>
+  <td class="seats-count"></td>
+  <td class="booking-link">
+    <button class="book-button flight-details">Book</button>
+  </td>
+</script>
+
+<script id="flight-list-template" type="text/template">
+  <table class="flight-table">
+    <tr>
+      <th>h1</th>
+      <th>h2</th>
+    </tr>
+    <tbody class="flight-rows"></tbody>
+
+  </table>
+
+</script>
+
+<div id="output"></div>
 
 </div>
 
+<div id="one"></div>
 <div id="table"></div>
 
 <div id="two"></div>
