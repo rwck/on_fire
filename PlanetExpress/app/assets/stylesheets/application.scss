@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,6 +9,41 @@
 	vertical-align: baseline;
 	box-sizing: border-box;
 }
+
+body, #table-bg {
+	font-family: 'Lato', helvetica, sans-serif;
+	background: url("clouds.jpg");
+	background-size: cover;
+}
+
+#container {
+	position: relative;
+	z-index: 100;
+	background: rgba(225,225,225,0.25);
+	height: 100vh;
+	display: flex;
+}
+
+#table-bg {
+	position: absolute;
+  	z-index: 99;
+ 	-webkit-filter: blur(10px);
+  	filter: url('/media/blur.svg#blur');
+  	filter: blur(10px);
+	width: 100%;
+	height: 100%;
+}
+
+h2 {
+	font-family: 'Megrim', helvetica;
+	font-size: 3em;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	-webkit-text-stroke-width: 2px;
+}
+
+/* FLIGHT SEARCH PAGE */
 
 body, #search-bg {
 	background: url("clouds.jpg");
@@ -92,4 +129,71 @@ h1 {
 #flight-search-submit:hover {
 	color: #DB6718;
 	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* FLIGHT LIST PAGE */ 
+
+.flight-table, #flight-rows {
+	position: relative;
+	z-index: 100;
+	border-collapse: collapse;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 150px;
+}
+
+.flight-table th, .flight-rows td {
+	background-color: rgba(0, 0 , 0, 0.5);
+	border-bottom: 1px solid white;
+	width: 16%;
+	height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	color: #fff;
+}
+
+.results {
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	z-index: 100;
+}
+
+.flight-table tr:hover {
+	background-color: rgba(0, 0 , 0, 0.5);
+	cursor: pointer;
+}
+
+.flight-table th {
+	background-color: rgba(140, 171 , 167, 1);
+	color: #26292E;
+}
+
+.flight-table tr:hover th {
+	background-color: rgba(140, 171 , 167, 1);
+	cursor: auto;
+}
+
+.book-button {
+	background-color: rgba(0, 0 , 0, 0);
+	color: #DB6718;
+	font-size: 1.2em;
+}
+
+.book-button:hover {
+	cursor: pointer;
+}
+
+.book-button:focus {
+	outline: none;
 }
