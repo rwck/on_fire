@@ -19,6 +19,8 @@ app.Flight_ItemView = Backbone.View.extend({
     var templateResult = this.template(this.model.attributes);
     // this.$el.text(this.model.get("origin"));
     // this.$el.html(templateResult(this.model.toJSON()));
+    console.log(this.model.attributes);
+    console.log(templateResult);
     this.$el.html(templateResult);
     // this.$el.append($("<td/>"))
 
@@ -32,53 +34,37 @@ app.Flight_ItemView = Backbone.View.extend({
   },
 
   drawTable: function(event) {
-    // console.log(event.target.id);
-    // console.log(event.current.);
     console.log(event.target.id);
 
     console.log("drawing table");
     var view = this;
     testview = this;
 
-    // this.collection.where({number: })
-
     var planeId = event.target.id;
     console.log(planeId);
 
-    plane = app.airplaneList.where({id: parseInt(planeId)});
-    console.log(plane);
-    rows = plane[0].get("row")
-    columns = plane[0].get("column")
+    var thisFlightID = app.Flight_ItemView.searchResult[0].get("airplane").id
 
-    console.log(rows);
-    console.log(columns);
+    var columns = app.Flight_ItemView.searchResult[0].get("airplane").column
+
+    var rows = app.Flight_ItemView.searchResult[0].get("airplane").row
 
 
-
-    // var flightToDraw = this.collection.where({
-    //   number: parseInt(id)
-    // });
-
-    // var airplaneId = something[0].get("airplane_id")
-
-    // console.log(airplaneId);
-
-    // airplaneLayout = app.airplaneList.where({
-    //   id: airplaneId
-    // })
-
-    // console.log(airplaneLayout);
-
-    // var row = airplaneLayout[0].get("row")
-    // var column = airplaneLayout[0].get("column")
+    // console.log(thisFlightID);
     //
-    // console.log(row);
+    // console.log(app.Flight_ItemView.searchResult);
     //
-    // console.log(column);
+    //
+    // plane = app.airplaneList.where({id: parseInt(planeId)});
+    // console.log(plane);
+    // rows = plane[0].get("row")
+    // columns = plane[0].get("column")
+    //
+    // console.log(rows);
+    // console.log(columns);
 
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    // var rows = row; // 1-30
-    // var columns = column;
+
     var result = "";
     result += "<table border=1>";
     result += "<tbody>";
@@ -96,10 +82,7 @@ app.Flight_ItemView = Backbone.View.extend({
     result += "</table>";
     // this.$el.html(result);
     $('#table').html(result);
-    console.log(result);
+    // console.log(result);
   },
-
-
-
 
 });
