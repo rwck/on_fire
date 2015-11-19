@@ -10,8 +10,8 @@ app.Flight_ItemView = Backbone.View.extend({
 
   events: {
     "click .book-button": "onClickBook",
-
     "click .flight-details": "drawTable",
+    "click .seat-button": "seatClicked"
   },
 
   render: function() {
@@ -27,6 +27,13 @@ app.Flight_ItemView = Backbone.View.extend({
     // this.$el.find("td:last-child").append("<p>hi</p>");
 
     return this;
+  },
+
+  seatClicked: function(event) {
+    // el = "#table";
+    console.log(this);
+    // alert("clicked!");
+    alert(event.target.id);
   },
 
   onClickBook: function(event) {

@@ -6,7 +6,8 @@ app.Flight_listView = Backbone.View.extend({
   events: {
 
     "click #flight-search-submit": "flightSearch",
-    "click .seat-button": "seatClicked"
+    "click .seat-button": "seatClicked",
+    
   },
 
   initialize: function() {
@@ -50,7 +51,6 @@ app.Flight_listView = Backbone.View.extend({
     } else {
       console.log("no result");
     };
-
   },
 
   renderSeatingView: function() {
@@ -90,12 +90,12 @@ app.Flight_listView = Backbone.View.extend({
     console.log(this.airplanes);
   },
 
-  seatClicked: function(event) {
-    el = "#table";
-    console.log(this);
-    // alert("clicked!");
-    alert(event.target.id);
-  },
+  // seatClicked: function(event) {
+  //   el = "#table";
+  //   console.log(this);
+  //   // alert("clicked!");
+  //   alert(event.target.id);
+  // },
 
   drawTable: function(event) {
     // console.log(event.target.id);

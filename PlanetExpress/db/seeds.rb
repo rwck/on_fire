@@ -20,8 +20,8 @@ flight3 = Flight.create(number: 33, origin: "B", destination: "A", date: Date.st
 flight4 = Flight.create(number: 44, origin: "B", destination: "C", date: Date.strptime('01/10/2015', '%d/%m/%Y'), seating_array: [], airplane_id: plane4.id)
 flight5 = Flight.create(number: 55, origin: "A", destination: "D", date: Date.strptime('01/11/2015', '%d/%m/%Y'), seating_array: [], airplane_id: plane1.id)
 
-Reservation.create(seat_reserved: "1A", user_id: amy.id, flight_id: flight1.id)
-Reservation.create(seat_reserved: "1B", user_id: bob.id, flight_id: flight2.id)
-Reservation.create(seat_reserved: "1C", user_id: cat.id, flight_id: flight3.id)
-Reservation.create(seat_reserved: "1D", user_id: amy.id, flight_id: flight4.id)
-Reservation.create(seat_reserved: "1E", user_id: bob.id, flight_id: flight5.id)
+Reservation.create(seat_reserved: ["1A"], user_id: amy.id, flight_id: flight1.id)
+Reservation.create(seat_reserved: ["1B"], user_id: bob.id, flight_id: flight2.id)
+Reservation.create(seat_reserved: ["1C"], user_id: cat.id, flight_id: flight3.id)
+Reservation.create(seat_reserved: ["1D"], user_id: amy.id, flight_id: flight4.id)
+Reservation.create(seat_reserved: ["1E"], user_id: bob.id, flight_id: flight5.id)

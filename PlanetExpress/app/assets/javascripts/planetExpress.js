@@ -7,10 +7,7 @@ var app = app || {};
 
 app.init = function() {
 
-
   app.airplaneList = new app.Airplane_list();
-
-
 
   app.airplaneList.fetch({
     complete: function() {
@@ -21,6 +18,8 @@ app.init = function() {
             collection: app.flight_list
           });
           app.flightview = new app.Flight_view();
+          app.reservationList = new app.Reservation_list()
+          app.reservationView = new app.Reservation_item()
           app.router = new app.Router();
           Backbone.history.start();
         }
