@@ -66,14 +66,14 @@ Flight Search View
       <%%= number %>
     </td>
     <td class="seats-count"></td>
-    <td class="booking-link">
-      <button class="book-button flight-details" id=<%%=airplane_id%>>Book Now</button>
+    <td class="booking-link" id=<%%= app.Flight_ItemView.searchResult[0].get("airplane").id %>>
+      <button class="book-button flight-details">Book Now</button>
     </td>
   </script>
 
 
-<!-- wtf are these?? what do they do?? why does removing them break everything??? im so confused -->
-  <div id="one"></div>
+  <div id="seating-view"></div>
+
   <div id="two"></div>
 
 

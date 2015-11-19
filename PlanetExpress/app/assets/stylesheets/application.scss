@@ -132,14 +132,12 @@ h1 {
 }
 
 
+/* added by Donal
 
 
 
-
-
-
-
-/* FLIGHT LIST PAGE */ 
+/* FLIGHT LIST PAGE */
+>>>>>>> testing
 
 .flight-table, #flight-rows {
 	position: relative;
@@ -198,6 +196,7 @@ h1 {
 .book-button:focus {
 	outline: none;
 }
+<<<<<<< HEAD
 
 
 
@@ -298,7 +297,7 @@ p {
 	/*background-color: rgba(38, 41 , 46, 0.75);*/
 	background-color: rgba(0, 0 , 0, 0.5);
 	color: #fff;
-	width: 60%;	
+	width: 60%;
 	display: block;
 	margin: auto;
 	font-size: 2em;
@@ -312,4 +311,3 @@ p {
 	color: #DB6718;
 	cursor: pointer;
 }
-

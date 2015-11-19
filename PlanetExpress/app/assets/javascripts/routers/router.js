@@ -4,6 +4,7 @@ app.Router = Backbone.Router.extend({
 
 	routes: {
 		"users": "testStuff",
+		"reservations": "testStuff",
 		"*other": "testStuff"
 	},
 

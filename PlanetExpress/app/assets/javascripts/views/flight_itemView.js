@@ -10,8 +10,8 @@ app.Flight_ItemView = Backbone.View.extend({
 
   events: {
     "click .book-button": "onClickBook",
-
     "click .flight-details": "drawTable",
+    "click .seat-button": "seatClicked"
   },
 
   render: function() {
@@ -19,6 +19,8 @@ app.Flight_ItemView = Backbone.View.extend({
     var templateResult = this.template(this.model.attributes);
     // this.$el.text(this.model.get("origin"));
     // this.$el.html(templateResult(this.model.toJSON()));
+    console.log(this.model.attributes);
+    console.log(templateResult);
     this.$el.html(templateResult);
     // this.$el.append($("<td/>"))
 
@@ -27,59 +29,41 @@ app.Flight_ItemView = Backbone.View.extend({
     return this;
   },
 
+  seatClicked: function(event) {
+    console.log(this);
+    alert(event.target.id);
+  },
+
   onClickBook: function(event) {
     console.log("on booking click", this.model);
   },
 
-  
+
   drawTable: function(event) {
-    // console.log(event.target.id);
-    // console.log(event.current.);
     console.log(event.target.id);
 
     console.log("drawing table");
     var view = this;
     testview = this;
 
-    // this.collection.where({number: })
-
     var planeId = event.target.id;
     console.log(planeId);
 
-    plane = app.airplaneList.where({id: parseInt(planeId)});
-    console.log(plane);
-    rows = plane[0].get("row")
-    columns = plane[0].get("column")
+    var thisFlightID = app.Flight_ItemView.searchResult[0].get("airplane").id
 
-    console.log(rows);
-    console.log(columns);
+    var columns = app.Flight_ItemView.searchResult[0].get("airplane").column
 
+    var rows = app.Flight_ItemView.searchResult[0].get("airplane").row
 
+    var seatsTaken = app.reservationView.attributes.seat_reserved;
+    console.log(seatsTaken);
 
-    // var flightToDraw = this.collection.where({
-    //   number: parseInt(id)
-    // });
+    app.Flight_ItemView.searchResult
 
-    // var airplaneId = something[0].get("airplane_id")
-
-    // console.log(airplaneId);
-
-    // airplaneLayout = app.airplaneList.where({
-    //   id: airplaneId
-    // })
-
-    // console.log(airplaneLayout);
-
-    // var row = airplaneLayout[0].get("row")
-    // var column = airplaneLayout[0].get("column")
-    //
-    // console.log(row);
-    //
-    // console.log(column);
+    var numberOfAvailableSeats = (app.Flight_ItemView.searchResult[0].get("airplane").column) * app.Flight_ItemView.searchResult[0].get("airplane").row;
 
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    // var rows = row; // 1-30
-    // var columns = column;
+
     var result = "";
     result += "<table id='seating'>";
     result += "<tbody>";
@@ -97,10 +81,7 @@ app.Flight_ItemView = Backbone.View.extend({
     result += "</table>";
     // this.$el.html(result);
     $('#table').html(result);
-    console.log(result);
+    // console.log(result);
   },
-
-
-
 
 });
