@@ -33,18 +33,27 @@ app.Flight_ItemView = Backbone.View.extend({
 
   drawTable: function(event) {
     // console.log(event.target.id);
+    // console.log(event.current.);
+    console.log(event.target.id);
+
     console.log("drawing table");
     var view = this;
     testview = this;
 
     // this.collection.where({number: })
 
-    var id = event.target.id;
-    console.log(id);
+    var planeId = event.target.id;
+    console.log(planeId);
 
-    console.log(this);
+    plane = app.airplaneList.where({id: parseInt(planeId)});
+    console.log(plane);
+    rows = plane[0].get("row")
+    columns = plane[0].get("column")
 
-    console.log(this.searchResult);
+    console.log(rows);
+    console.log(columns);
+
+
 
     // var flightToDraw = this.collection.where({
     //   number: parseInt(id)
@@ -68,8 +77,8 @@ app.Flight_ItemView = Backbone.View.extend({
     // console.log(column);
 
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var rows = row; // 1-30
-    var columns = column;
+    // var rows = row; // 1-30
+    // var columns = column;
     var result = "";
     result += "<table border=1>";
     result += "<tbody>";
