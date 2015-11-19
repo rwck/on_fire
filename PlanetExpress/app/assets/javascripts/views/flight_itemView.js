@@ -41,6 +41,8 @@ app.Flight_ItemView = Backbone.View.extend({
 
   drawTable: function(event) {
     console.log(event.target.id);
+    $("#container").hide();
+    $("#wrapper").show();
 
     console.log("drawing table");
     var view = this;
