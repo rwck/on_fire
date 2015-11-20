@@ -83,6 +83,10 @@ app.Flight_view = Backbone.View.extend({
     }
 
     console.log(numberSeatsTaken + seatSingPlu + "so far");
+    alert(numberSeatsTaken + seatSingPlu + "so far");
+
+    app.flightview.seatsTaken = numberSeatsTaken;
+
 
   },
 })

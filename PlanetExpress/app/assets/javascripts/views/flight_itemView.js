@@ -19,9 +19,22 @@ app.Flight_ItemView = Backbone.View.extend({
     var templateResult = this.template(this.model.attributes);
     // this.$el.text(this.model.get("origin"));
     // this.$el.html(templateResult(this.model.toJSON()));
+
+    var numberOfAvailableSeats = (app.Flight_ItemView.searchResult[0].get("airplane").column) * app.Flight_ItemView.searchResult[0].get("airplane").row;
+
+    console.log(numberOfAvailableSeats);
+    console.log(app.flightview.seatsTaken);
+
+    if (app.flightview.seatsTaken !== null) {
+      numberOfAvailableSeats = numberOfAvailableSeats - parseInt(app.flightview.seatsTaken);
+    }
+
+
     console.log(this.model.attributes);
-    console.log(templateResult);
+    // console.log(templateResult);
     this.$el.html(templateResult);
+    this.$el.find(".seats-count").append("<p>" + numberOfAvailableSeats.toString() + "</p>");
+
     // this.$el.append($("<td/>"))
 
     // this.$el.find("td:last-child").append("<p>hi</p>");
