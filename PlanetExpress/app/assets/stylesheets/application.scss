@@ -10,7 +10,7 @@
 	box-sizing: border-box;
 }
 
-body, #table-bg {
+html, #table-bg {
 	font-family: 'Lato', helvetica, sans-serif;
 	background: url("clouds.jpg");
 	background-size: cover;
@@ -45,14 +45,14 @@ h2 {
 
 /* FLIGHT SEARCH PAGE */
 
-body, #search-bg {
+html, #search-bg {
 	background: url("clouds.jpg");
 	background-size: cover;
 }
 
-body {
+html {
 	font-family: 'Lato', helvetica, sans-serif;
-	background-position: center top;
+	background-position: top;
 }
 
 h1 {
@@ -198,12 +198,6 @@ h1 {
 }
 
 
-#wrapper {
-
-}
-
-
-
 
 /* Seat Selection */
 
@@ -219,7 +213,7 @@ h1 {
 
 #table {
 	margin-left: 100px;
-	margin-top: 50px;
+
 }
 
 #seating, #seating th, #seating td {
@@ -264,9 +258,12 @@ h1 {
 }
 
 #flight-details {
+	display: fixed;
 	position: relative;
+	float: right;
 	z-index: 100;
-	width: 60%;
+	width: 50%;
+	margin-top: 0;
 }
 
 h2 {
@@ -317,3 +314,6 @@ p {
 	color: #DB6718;
 	cursor: pointer;
 }
+
+
+
