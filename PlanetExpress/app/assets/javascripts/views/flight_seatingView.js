@@ -7,7 +7,6 @@ app.Flight_view = Backbone.View.extend({
   el: "#table",
 
   events: {
-
     "click .seat-button": "seatClicked"
   },
 
@@ -62,7 +61,5 @@ app.Flight_view = Backbone.View.extend({
     alert(numberSeatsTaken + seatSingPlu + "so far");
 
     app.flightview.seatsTaken = numberSeatsTaken;
-
-
   },
 })
